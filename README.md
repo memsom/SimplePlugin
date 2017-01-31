@@ -1,2 +1,2 @@
 # SimplePlugin
-Simple plugin architecture demo
+Simple plugin architecture demo. Demonstrated using a simple protocol to load an assembly dynamically, resolve a known bootsytap interface to add the plugin implementation to an IoC container, then use that plugin implementation directly. I purposely used two different techniques to implement the plugin, to show that the actual implementation is essentially opaque to the end user. The important part is the conventions being adhered to.
