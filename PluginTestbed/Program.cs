@@ -31,9 +31,32 @@ namespace PluginTestbed
                 bootstrap.Initialise(container);
             }
 
-            var plugin = container.Resolve<IPlugIn>();
+            if (container.Kernel.HasComponent(typeof(IPlugIn)))
+            {
+                var plugin = container.Resolve<IPlugIn>();
 
-            Console.WriteLine($"Plugin says {plugin.GetId()}");
+                Console.WriteLine($"Plugin says {plugin.GetId()}");
+            }
+            
+            if (container.Kernel.HasComponent(typeof(IDataStore)))
+            {
+                var dataStore = container.Resolve<IDataStore>();
+                dataStore.DataAdded += (s, e) =>
+                {
+                    Console.WriteLine($"Data added :: ID {e.Id.Id.ToString()}, DataId {e.DataId.Id.ToString()}, Success {e.Success}");
+                    var result = dataStore.Retrieve(e.DataId);
+                    Console.WriteLine($"Retrieve requested :: {result.Id.ToString()}");
+                };
+
+                dataStore.DataRetrieved += (s, e) =>
+                {
+                    Console.WriteLine($"Data retieved :: ID {e.Id.Id.ToString()}, Data {e.Data}, Success {e.Success}");
+                };
+
+                dataStore.Add("Hello, world");
+            }
+
+            Console.ReadLine();
         }
     }
 }
