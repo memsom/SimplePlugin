@@ -6,15 +6,21 @@ using System.Text;
 using RatCow.SimplePlugin.Interfaces.Events;
 using RatCow.SimplePlugin.Interfaces.Support;
 
-namespace AnotherPlugin
+namespace TranslatorPoweredPlugin.Support
 {
     public class AddData : Base, IAddData
     {
         readonly IDataProcessor processor;
+        readonly IDataStore store;
 
-        public AddData(IDataProcessor processor)
+        public AddData(IDataProcessor processor, IDataStore store)
         {
             this.processor = processor;
+            this.store = store;
+            DataAdded += (s, e) =>
+            {
+                (this.store as IAddData).CallDataAdded(e);
+            };
         }
 
         public event EventHandler<AddDataEventArgs> DataAdded;
@@ -23,7 +29,6 @@ namespace AnotherPlugin
         {
             var result = new ItemId();
             var id = processor.Add(data);
-            CallDataAdded(new AddDataEventArgs { DataId = id, Id = result, Success = true });
             return result;
         }
 

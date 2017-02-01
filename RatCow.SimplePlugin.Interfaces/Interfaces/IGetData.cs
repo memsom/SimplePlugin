@@ -11,6 +11,10 @@ namespace RatCow.SimplePlugin.Interfaces
     {
         ItemId Retrieve(ItemId id);
 
+        string RetrieveData(ItemId id);
+
         event EventHandler<GetDataEventArgs> DataRetrieved;
+
+        void CallDataRetrieved(GetDataEventArgs e);
     }
 }

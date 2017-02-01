@@ -29,9 +29,24 @@ namespace AnotherPlugin
             return addData.Add(data);
         }
 
+        public void CallDataAdded(AddDataEventArgs e)
+        {
+            DataAdded?.Invoke(this, e);
+        }
+
+        public void CallDataRetrieved(GetDataEventArgs e)
+        {
+            DataRetrieved?.Invoke(this, e);
+        }
+
         public ItemId Retrieve(ItemId id)
         {
             return getData.Retrieve(id);
+        }
+
+        public string RetrieveData(ItemId id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,15 +6,21 @@ using System.Text;
 using RatCow.SimplePlugin.Interfaces.Events;
 using RatCow.SimplePlugin.Interfaces.Support;
 
-namespace AnotherPlugin
+namespace TranslatorPoweredPlugin.Support
 {
     public class GetData : Base, IGetData
     {
         readonly IDataProcessor processor;
+        readonly IDataStore store;
 
-        public GetData(IDataProcessor processor)
+        public GetData(IDataProcessor processor, IDataStore store)
         {
             this.processor = processor;
+            this.store = store;
+            DataRetrieved += (s, e) =>
+            {
+                (this.store as IGetData).CallDataRetrieved(e);
+            };
         }
 
         public event EventHandler<GetDataEventArgs> DataRetrieved;
@@ -27,8 +33,7 @@ namespace AnotherPlugin
         public ItemId Retrieve(ItemId id)
         {
             var result = new ItemId();
-            var data = processor.Retrieve(id);
-            CallDataRetrieved(new GetDataEventArgs { Data = data, Id = result, Success = true });
+            var data = processor.Retrieve(id);            
             return result;
         }
 

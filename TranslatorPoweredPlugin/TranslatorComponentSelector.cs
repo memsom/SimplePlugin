@@ -1,4 +1,6 @@
 ﻿using Castle.Facilities.TypedFactory;
+using RatCow.SimplePlugin.Interfaces.Commands;
+using RatCow.SimplePlugin.Interfaces.Events;
 using System.Collections;
 using System.Reflection;
 
@@ -13,22 +15,14 @@ namespace TranslatorPoweredPlugin
             
         protected override string GetComponentName(MethodInfo method, object[] arguments)
         {
-            //if (method.Name == "CreateTranslator" && arguments.Length == 1 && arguments[0] is IccsCommand)
-            //{
-            //    var rawTranslatorName = adapter.GetTranslatorName(arguments[0].GetType().Name);
-            //    if(!string.IsNullOrEmpty(rawTranslatorName))
-            //    {
-            //        var result = $"TranslatorPoweredPlugin.Translators.Commands.{rawTranslatorName}";
-
-            //        return result;
-            //    }
-            //}
-            //else if (method.Name == "CreateTranslator" && arguments.Length == 1 && arguments[0] is BaseIccsEventArgs)
-            //{
-            //    var result = typeof(EventTranslator).FullName;
-
-            //    return result;
-            //}
+            if (method.Name == "CreateTranslator" && arguments.Length == 1 && arguments[0] is BaseCommand)
+            {
+                return $"TranslatorPoweredPlugin.Translators.Commands.{arguments[0].GetType().Name}Translator";
+            }
+            else if (method.Name == "CreateTranslator" && arguments.Length == 1 && arguments[0] is BaseEventArgs)
+            {
+                return $"TranslatorPoweredPlugin.Translators.Events.{arguments[0].GetType().Name}Translator";
+            }
 
             return base.GetComponentName(method, arguments);
         }
