@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginTestbed", "PluginTestbed\PluginTestbed.csproj", "{CA1E245B-2CB1-4543-92A3-DB964B0F66CB}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlugin", "TestPlugin\TestPlugin.csproj", "{33E18426-6D3D-4338-8D8C-04F6AAE7DAF8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface", "Interface", "{54240675-A4E7-4659-95BC-DCC780A23F80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslatorPoweredPlugin", "TranslatorPoweredPlugin\TranslatorPoweredPlugin.csproj", "{F1F785E4-2119-4B06-A6FD-D6FDE22FB35E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{33E18426-6D3D-4338-8D8C-04F6AAE7DAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33E18426-6D3D-4338-8D8C-04F6AAE7DAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33E18426-6D3D-4338-8D8C-04F6AAE7DAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F785E4-2119-4B06-A6FD-D6FDE22FB35E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F785E4-2119-4B06-A6FD-D6FDE22FB35E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F785E4-2119-4B06-A6FD-D6FDE22FB35E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F785E4-2119-4B06-A6FD-D6FDE22FB35E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,5 +51,6 @@ Global
 		{941B6C0F-4C74-485F-9DF9-C98F7B3B1E05} = {54240675-A4E7-4659-95BC-DCC780A23F80}
 		{5FAEDF6A-CC33-4DCA-9934-0C7CA89C786F} = {BB6C84DB-A22F-45D8-B1F5-6016FEA03F74}
 		{33E18426-6D3D-4338-8D8C-04F6AAE7DAF8} = {BB6C84DB-A22F-45D8-B1F5-6016FEA03F74}
+		{F1F785E4-2119-4B06-A6FD-D6FDE22FB35E} = {BB6C84DB-A22F-45D8-B1F5-6016FEA03F74}
 	EndGlobalSection
 EndGlobal

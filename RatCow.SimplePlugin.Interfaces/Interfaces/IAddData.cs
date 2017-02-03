@@ -12,5 +12,7 @@ namespace RatCow.SimplePlugin.Interfaces
         ItemId Add(string data);
 
         event EventHandler<AddDataEventArgs> DataAdded;
+
+        void CallDataAdded(AddDataEventArgs e);
     }
 }

@@ -56,6 +56,7 @@ namespace PluginTestbed
                 dataStore.Add("Hello, world");
             }
 
+            Console.WriteLine("Press any key");
             Console.ReadLine();
         }
     }
